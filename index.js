@@ -13,24 +13,10 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 3001;
 
-// Sử dụng cors
-const corsOrigins = process.env.CORS_ORIGINS
-  ? process.env.CORS_ORIGINS.split(",")
-      .map((origin) => origin.trim())
-      .filter(Boolean)
-  : [];
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) {
-        return callback(null, true);
-      }
-      if (corsOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      callback(new Error(`CORS policy: origin ${origin} not allowed`));
-    },
+    origin: process.env.CORS_ORIGINS.split(","),
     credentials: true,
   }),
 );

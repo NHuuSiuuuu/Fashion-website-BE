@@ -10,10 +10,10 @@ exports.chatBot = async (req, res) => {
 
     const productsWithLink = products.map((prev) => ({
       ...prev,
-      link: `http://localhost:5173/products/${prev.slug}`,
+      link: `/products/${prev.slug}`,
     }));
     const productList = JSON.stringify(productsWithLink, null, 2); // tham số thứ 2 là replacer: lọc lấy ra trường nào đấy ["name"] - số 2 là khoảng cách space
-    console.log("messages",messages);
+    console.log("messages", messages);
 
     if (!messages || messages.length === 0) {
       return res
