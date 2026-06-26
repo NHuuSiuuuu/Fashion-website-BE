@@ -17,7 +17,7 @@ module.exports.createOrder = async (req) => {
     const orderProducts = [];
 
     // Kiem tra xem da co cart chua?
-    console.log("req", req.ip);
+    // console.log("req", req.ip);
     let cart = await CartModel.findOne({ cart_id });
     // console.log("cart", customer.paymentMethod);
     let totalPrice = 0;

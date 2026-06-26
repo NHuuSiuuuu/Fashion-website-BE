@@ -13,27 +13,14 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const port = process.env.PORT || 3001;
 
-const allowedOrigins = process.env.CORS_ORIGINS.split(",");
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      // allow tools like Postman / server-to-server
-      if (!origin) return callback(null, true);
-
-      const normalizedOrigin = origin.replace(/\/$/, ""); // remove trailing slash
-
-      if (allowedOrigins.includes(normalizedOrigin)) {
-        return callback(null, true);
-      }
-
-      console.log("CORS blocked origin:", origin);
-      return callback(new Error("Not allowed by CORS"));
-    },
+    origin: process.env.CORS_ORIGINS.split(","),
     credentials: true,
   }),
 );
-// app.options("*", cors());
+
 app.use(cookieParser());
 
 // console.log
