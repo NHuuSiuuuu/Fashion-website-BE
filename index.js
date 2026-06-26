@@ -23,8 +23,6 @@ app.use(
 
 app.use(cookieParser());
 
-// console.log
-console.log("ORIGINS:", allowedOrigins);
 // Dùng thằng này để truy cập vào link ảnh: http://localhost:3001/uploads/filename.jpg
 const path = require("path");
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
